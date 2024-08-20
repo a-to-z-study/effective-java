@@ -7,6 +7,18 @@
 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 5. 정적 팩터리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
 
+`Boolean.valueOf(boolean)` 메서드는 객체를 아예 생성하지 않는다.  
+Boolean 클래스는 `true`와 `false` 값을 나타내기 위해 캐싱된 두 개의 정적 상수 객체를 제공한다.
+- Boolean.TRUE
+- Boolean.FALSE
+
+```java
+Boolean b1 = Boolean.valueOf(true);
+Boolean b2 = Boolean.valueOf(true);
+
+System.out.println(b1 == b2); // true
+```
+
 다음은 정적 팩터리 메서드에 흔히 사용하는 명명 방식들이다.
 - from: 매개변수를 하나 받아서 인스턴스를 반환하는 형변환 메서드
 - of: 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환하는 집계 메서드
@@ -41,6 +53,8 @@ ex) [Pizza](Pizza.java)
 1. public static final 필드 방식의 싱글턴 ex) [PublicElvis](PublicElvis.java)
 2. 정적 팩터리 방식의 싱글턴 ex) [PrivateElvis](PrivateElvis.java)
 3. 열거 타입 방식의 싱글턴 ex) [EnumElvis](EnumElvis.java)
+
+자바는 기본적으로 열거 타입의 인스턴스는 하나만 생성하여 관리하기 때문에 직렬화 문제, 리플렉션 공격, 스레드 안전성 보장 측면에서 장점을 갖는다.
 
 ## Item 4: 인스턴스화를 막으려면 private 생성자를 사용하라.
 
