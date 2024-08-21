@@ -1,10 +1,12 @@
-# Lombok의 `@Builder`와 직접 구현한 빌더 패턴 비교
+# Table of Contents
 
-## Table of Contents
-- [Lombok의 `@Builder`를 사용했을 때의 장단점](#1-lombok의-builder를-사용한-경우)
-- [직접 구현한 빌더 패턴을 사용했을 때의 장단점](#2-직접-구현한-빌더-패턴을-사용한-경우)
+- [Lombok의 `@Builder`와 직접 구현한 빌더 패턴 비교](#lombok의-builder와-직접-구현한-빌더-패턴-비교)
+  - [Lombok의 `@Builder`를 사용했을 때의 장단점](#1-lombok의-builder를-사용한-경우)
+  - [직접 구현한 빌더 패턴을 사용했을 때의 장단점](#2-직접-구현한-빌더-패턴을-사용한-경우)
 
 <br/>
+
+# Lombok의 `@Builder`와 직접 구현한 빌더 패턴 비교
 
 ## 1. Lombok의 `@Builder`를 사용한 경우
 
