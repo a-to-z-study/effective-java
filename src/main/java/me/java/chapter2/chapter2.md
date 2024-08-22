@@ -3,9 +3,19 @@
 정적 팩터리 메서드가 생성자보다 좋은 점 5가지
 1. 이름을 가질 수 있다. (반환될 객체의 특성을 쉽게 묘사할 수 있다.)
 2. (필요에 따라) 호출될 때마다 인스턴스를 새로 생성하지 않아도 된다.
+   - 플라이웨이트(Flyweight) 패턴도 이와 비슷한 기법
 3. 반환 타입의 하위 타입 객체를 반환할 수 있다.
 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 5. 정적 팩터리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
+
+하나의 시그니처로는 하나의 생성자만 만들 수 있다.
+- 매개변수 순서를 다르게 한 생성자를 추가할 수 있지만 각 생성자의 의도를 모르면 실수를 할 수 있다.
+
+플라이웨이트 패턴
+- 재사용 가능한 객체 인스턴스를 공유하여 메모리 사용량을 최소화하는 구조 패턴
+- 동일하거나 유사한 객체들 사이에 가능한 공유 가능한 데이터를 공유하도록 하여 최적화를 노리는 경량 패턴이라고도 불린다.
+- 자바 적용 사례
+  - String 클래스는 Flyweight 패턴을 통해 `String Constant Pool`로 리터럴 문자열 데이터에 대한 캐싱
 
 `Boolean.valueOf(boolean)` 메서드는 객체를 아예 생성하지 않는다.  
 Boolean 클래스는 `true`와 `false` 값을 나타내기 위해 캐싱된 두 개의 정적 상수 객체를 제공한다.
@@ -18,6 +28,9 @@ Boolean b2 = Boolean.valueOf(true);
 
 System.out.println(b1 == b2); // true
 ```
+
+`Integer.valueOf()`, `Double.valueOf()` 같은 Wrapper 클래스들도 마찬가지로 적용
+
 
 다음은 정적 팩터리 메서드에 흔히 사용하는 명명 방식들이다.
 - from: 매개변수를 하나 받아서 인스턴스를 반환하는 형변환 메서드
@@ -114,10 +127,35 @@ public class SpellChecker {
 }
 ```
 
+<br>
+
+의존 객체 주입의 변형으로 생성자에 자원 팩터리를 넘겨주는 방식이 있다.
+팩터리란 호출할 때마다 특정 타입의 인스턴스를 반복해서 만들어주는 객체를 말한다.
+즉, 팩토리 메서드 패턴을 구현한 것
+`Supplier<T>` 를 통해 팩터리를 넘길 수 있다.
+
+- [Factory Method Pattern](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9CFactory-Method-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90)
+- [Enum Factory Method](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-Enum-Factory-Method-%EB%B3%80%ED%98%95-%ED%8C%A8%ED%84%B4)
+
 ## Item 6: 불필요한 객체 생성을 피하라.
 
 똑같은 기능의 객체를 매번 생성하기 보다는 객체 하나를 재사용하는 편이 나을 때가 많다.
 특히 생성 비용이 아주 비싼 객체가 반복해서 필요하다면 캐싱하여 재사용하는 것이 좋다.
+
+`String.matches` 메서드는 정규표현식으로 문자혈 형태를 확인하는 가장 쉬운 방법이지만, 반복적으로 사용하기엔 적합하지 않다.
+내부에서 만드는 Pattern 인스턴스의 생성 비용이 높아서 Pattern 인스턴스를 캐싱해두고 재사용하면 훨씬 효율적
+`Pattern.macher().matches()`
+
+```java
+public class RomanNumerals {
+	private static final Pattern ROMAN = Pattern.compile(
+		"^(?=.)M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+
+	static boolean isRomanNumeralFast(String s) {
+		return ROMAN.matcher(s).matches();
+	}
+}
+```
 
 오토박싱은 기본 타입과 그에 대응하는 박싱된 기본 타입의 구분을 흐려주지만, 완전히 없애주는 것은 아니다.
 의미상으로는 별다를 것 없지만 성능에서는 그렇지 않다.
@@ -138,6 +176,9 @@ public class SpellChecker {
 이는 프로그램을 필요 이상으로 지저분하게 만든다.
 다 쓴 참조를 해제하는 가장 좋은 방법은 그 참조를 담은 변수를 유효 범위(scope) 밖으로 밀어내는 것이다.
 만약 변수의 범위를 최소가 되게 정의헀다면 이 일은 자연스럽게 이뤄진다.
+
+객체 참조를 null 처리하는 일은 예외적인 경우여야 한다.
+- 배열의 경우 사용하지 않는 영역(비활성)이 더 이상 쓸모없다는 것은 프로그래머의 생각으로 가비지 컬렉터는 알 수가 없다.
 
 ## Item 8: finalizer와 cleaner 사용을 피하라.
 
