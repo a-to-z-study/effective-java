@@ -41,11 +41,14 @@
     - [docs]()
 - [ ] Item 14: Comparable을 구현할지 고려하라
     - [docs](./src/main/java/me/java/chapter3/chapter3.md#item-14-comparable을-구현할지-고려하라)
+
+## Chapter 4. 클래스와 인터페이스
+
 - [ ] Item 17: 변경 가능성을 최소화하라
-    - [docs](./src/main/java/me/java/chapter3/chapter3.md#item-17-변경-가능성을-최소화하라)
+    - [docs](./src/main/java/me/java/chapter3/chapter4.md#item-17-변경-가능성을-최소화하라)
 - [ ] Item 18: 상속보다는 컴포지션을 이용하라
-    - [docs](./src/main/java/me/java/chapter3/chapter3.md#item-18-상속보다는-컴포지션을-이용하라)
+    - [docs](./src/main/java/me/java/chapter3/chapter4.md#item-18-상속보다는-컴포지션을-이용하라)
 - [ ] Item 20: 추상 클래스보다는 인터페이스를 우선하라
-    - [docs](./src/main/java/me/java/chapter3/chapter3.md#item-20-추상-클래스보다는-인터페이스를-우선하라)
+    - [docs](./src/main/java/me/java/chapter3/chapter4.md#item-20-추상-클래스보다는-인터페이스를-우선하라)
 - [ ] Item 22: 인터페이스는 타입을 정의하는 용도로만 사용하라
-    - [docs](./src/main/java/me/java/chapter3/chapter3.md#item-22-인터페이스는-타입을-정의하는-용도로만-사용하라)
+    - [docs](./src/main/java/me/java/chapter3/chapter4.md#item-22-인터페이스는-타입을-정의하는-용도로만-사용하라)
