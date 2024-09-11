@@ -58,3 +58,41 @@ Object 기반 스택을 제네릭으로 변경해보자.
 
 하지만 배열의 런타임 타입이 컴파일타임 타입과 달라 힙 오염을 일으킨다. (Item 32)  
 힙 오염이 맘에 걸리는 프로그래머는 두 번째 방식을 고수하기도 한다.
+
+<br/>
+
+## Item 31: 한정적 와일드카드를 사용해 API 유연성을 높이라
+
+Stack 클래스를 떠올려보자.  
+Stack의 public API에는 다음과 같은 것들이 있다.
+
+```java
+public class Stack<E> {
+	public Stack();
+	public void push(E e);
+	public E pop();
+	public boolean isEmpty();
+}
+```
+
+이때 한정적 와일드카드 타입이라는 특별한 매개변수화 타입을 사용하여 하위 타입까지 포함할 수 있도록 개선할 수 있다.
+```java
+public void pushAll(Iterable<? extends E> src) {
+	for (E e : src) {
+		push(e);
+	}
+}
+```
+
+`pushAll()` 의 입력 매개변수 타입은 `E의 Iterable` 이 아니라 `E 하위 타입의 Iterable` 이라는 뜻이다.  
+이렇게 하면 `Stack<Number>` 에 `pushAll(Iterable<Integer>)` 을 수행해도 문제없이 동작한다.
+
+> 한편, 입력 매개변수가 생산자와 소비자 역할을 동시에 한다면 와일드카드 타입을 써도 좋을 게 없다.  
+> 타입을 정확히 지정해야 하는 상황으로, 이때는 와일드카드 타입을 쓰지 말아야 한다.  
+
+> 다음 공식을 외워두면 어떤 와일드카드 타입을 써야 하는지 기억하는 데 도움이 될 것이다.  
+> _PECS: producer-extends, consumer-super_  
+> 즉, 매개변수화 타입 T가 생산자라면 <? extends T>를 사용하고, 소비자라면 <? super T>를 사용하라는 뜻이다.
+
+> 반환 타입에는 한정적 와일드카드를 사용하면 안된다.  
+> 유연성을 높여주기는커녕 클라이언트 코드에서도 와일드카드 타입을 써야 하기 때문이다.
