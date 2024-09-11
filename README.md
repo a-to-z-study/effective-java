@@ -77,8 +77,10 @@
 ## Chapter 5. 제네릭
 
 - [x] Item 26: 로 타입은 사용하지 말라
+  - [docs](./src/main/java/me/java/chapter5/chapter5.md#item-26-로-타입은-사용하지-말라)
 - [x] Item 27: 비검사 경고를 제거하라
 - [x] Item 28: 배열보다는 리스트를 사용하라
+  - [docs](./src/main/java/me/java/chapter5/chapter5.md#item-28-배열보다는-리스트를-사용하라)
 - [x] Item 29: 이왕이면 제네릭 타입으로 만들라
 - [x] Item 30: 이왕이면 제네릭 메서드로 만들라
 - [x] Item 31: 한정적 와일드카드를 사용해 API 유연성을 높이라
@@ -90,13 +92,17 @@
 ## Chapter 6. 열거 타입과 애너테이션
 
 - [x] Item 34: int 상수 대신 열거 타입을 사용하라
+  - [docs](./src/main/java/me/java/chapter6/chapter6.md#item-34-int-상수-대신-열거-타입을-사용하라)
 - [x] Item 35: ordinal 메서드 대신 인스턴스 필드를 사용하라
 - [x] Item 36: 비트 필드 대신 EnumSet을 사용하라
+  - [docs](./src/main/java/me/java/chapter6/chapter6.md#item-36-비트-필드-대신-enumset을-사용하라)
 - [x] Item 37: ordinal 인덱싱 대신 EnumMap을 사용하라
 - [x] Item 38: 확장할 수 있는 열거 타입이 필요하면 인터페이스를 사용하라
 - [x] Item 39: 명명 패턴보다 애너테이션을 사용하라
 - [x] Item 40: @Override 애너테이션을 일관되게 사용하라
+  - [docs](./src/main/java/me/java/chapter6/chapter6.md#item-40-override-애너테이션을-일관되게-사용하라)
 - [x] Item 41: 정의하려는 것이 타입이라면 마커 인터페이스를 사용하라
+  - [docs](./src/main/java/me/java/chapter6/chapter6.md#item-41-정의하려는-것이-타입이라면-마커-인터페이스를-사용하라)
 
 <br/>
 
