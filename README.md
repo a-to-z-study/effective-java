@@ -82,6 +82,7 @@
 - [x] Item 28: 배열보다는 리스트를 사용하라
   - [docs](./src/main/java/me/java/chapter5/chapter5.md#item-28-배열보다는-리스트를-사용하라)
 - [x] Item 29: 이왕이면 제네릭 타입으로 만들라
+  - [docs](./src/main/java/me/java/chapter5/chapter5.md#item-29-이왕이면-제네릭-타입으로-만들라)
 - [x] Item 30: 이왕이면 제네릭 메서드로 만들라
 - [x] Item 31: 한정적 와일드카드를 사용해 API 유연성을 높이라
 - [x] Item 32: 제네릭과 가변인수를 함께 쓸 때는 신중하라
